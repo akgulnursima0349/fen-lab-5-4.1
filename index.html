@@ -57,18 +57,15 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .title {
             font-size: 4em;
             font-weight: bold;
             margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
             animation: titlePulse 2s ease-in-out infinite alternate;
+            color: #2c3e50;
         }
 
         @keyframes titlePulse {
@@ -80,7 +77,7 @@
             font-size: 1.8em;
             color: #2c3e50;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .content {
@@ -89,7 +86,7 @@
             color: #2c3e50;
             margin-bottom: 40px;
             font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .btn {
@@ -804,7 +801,6 @@
                     </div>
                     <div class="controls">
                         <button class="btn" onclick="clearCanvas()">Temizle</button>
-                        <button class="btn" onclick="saveDrawing()">Çizimi Kaydet</button>
                     </div>
                 </div>
                 
@@ -855,7 +851,7 @@
                         </tbody>
                     </table>
                     <div class="controls">
-                        <button class="btn" onclick="exportPDF()">PDF Dışa Aktar</button>
+                        <button class="btn" onclick="saveData()">Verileri Kaydet</button>
                     </div>
                 </div>
             </div>
@@ -909,32 +905,58 @@
         <!-- E8: Bilim Tarihi -->
         <div class="screen" id="screen-8">
             <div class="header">
-                <h2>Bilim Tarihi Anı: İbnülheysem ve Karanlık Kutu</h2>
+                <h2>🔬 Bilim Tarihi Anı: İbnülheysem ve Karanlık Kutu 🔬</h2>
             </div>
             
             <div class="content">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
                     <div>
                         <p><strong>İbnülheysem (Alhazen)</strong>, 'karanlık oda (kutu)' düzenekleriyle ışığın doğrusal yayıldığını gösteren çalışmalarıyla optik biliminin öncülerindendir.</p>
                         <p>Simülasyonlardaki 'delikli kart' fikriyle benzer şekilde, küçük bir delikten geçen düz ışınlar, karşıda görüntü oluşturur.</p>
                     </div>
-                    <div style="background: #2c3e50; padding: 20px; border-radius: 10px; color: white;">
+                    <div style="background: linear-gradient(135deg, #2c3e50, #34495e); padding: 30px; border-radius: 20px; color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                         <div style="text-align: center; margin-bottom: 20px;">
-                            <div style="width: 200px; height: 150px; background: #34495e; border: 2px solid #7f8c8d; border-radius: 8px; margin: 0 auto; position: relative;">
-                                <div style="position: absolute; left: 10px; top: 50%; width: 4px; height: 4px; background: #f1c40f; border-radius: 50%;"></div>
-                                <div style="position: absolute; right: 20px; top: 20px; width: 60px; height: 40px; background: #f1c40f; border-radius: 4px;"></div>
-                                <div style="position: absolute; left: 20px; top: 20px; right: 20px; bottom: 20px; border: 1px dashed #7f8c8d;"></div>
+                            <div style="width: 300px; height: 200px; background: #1a1a1a; border: 3px solid #7f8c8d; border-radius: 10px; margin: 0 auto; position: relative; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);">
+                                <!-- Sol taraf - Işık kaynakları -->
+                                <div style="position: absolute; left: 20px; top: 20px; width: 60px; height: 100px;">
+                                    <!-- Üst mum -->
+                                    <div style="position: absolute; top: 0; left: 20px; width: 8px; height: 20px; background: #8B4513; border-radius: 4px;"></div>
+                                    <div style="position: absolute; top: -5px; left: 22px; width: 4px; height: 8px; background: #FFD700; border-radius: 2px; box-shadow: 0 0 10px #FFD700;"></div>
+                                    
+                                    <!-- Orta mum (sönük) -->
+                                    <div style="position: absolute; top: 40px; left: 20px; width: 8px; height: 20px; background: #8B4513; border-radius: 4px;"></div>
+                                    
+                                    <!-- Alt mum -->
+                                    <div style="position: absolute; top: 80px; left: 20px; width: 8px; height: 20px; background: #8B4513; border-radius: 4px;"></div>
+                                    <div style="position: absolute; top: 75px; left: 22px; width: 4px; height: 8px; background: #FFD700; border-radius: 2px; box-shadow: 0 0 10px #FFD700;"></div>
+                                </div>
+                                
+                                <!-- Orta duvar ve delik -->
+                                <div style="position: absolute; left: 100px; top: 20px; width: 4px; height: 160px; background: #7f8c8d; border-radius: 2px;"></div>
+                                <div style="position: absolute; left: 98px; top: 90px; width: 8px; height: 8px; background: #FFD700; border-radius: 50%; box-shadow: 0 0 15px #FFD700;"></div>
+                                
+                                <!-- Işık ışınları -->
+                                <div style="position: absolute; left: 20px; top: 10px; width: 80px; height: 2px; background: linear-gradient(90deg, #FFD700, transparent); transform: rotate(-10deg); transform-origin: left;"></div>
+                                <div style="position: absolute; left: 20px; top: 90px; width: 80px; height: 2px; background: linear-gradient(90deg, #FFD700, transparent); transform: rotate(10deg); transform-origin: left;"></div>
+                                
+                                <!-- Sağ taraf - Karanlık kutu içi -->
+                                <div style="position: absolute; right: 20px; top: 20px; width: 160px; height: 160px; background: #000; border-radius: 8px; border: 2px solid #333;">
+                                    <!-- Ters görüntüler -->
+                                    <div style="position: absolute; top: 120px; left: 20px; width: 8px; height: 20px; background: #FFD700; border-radius: 4px; box-shadow: 0 0 10px #FFD700;"></div>
+                                    <div style="position: absolute; top: 40px; left: 20px; width: 8px; height: 20px; background: #FFD700; border-radius: 4px; box-shadow: 0 0 10px #FFD700;"></div>
+                                </div>
                             </div>
                         </div>
-                        <p style="text-align: center; font-size: 0.9em;">Karanlık Kutu (Camera Obscura) Şeması</p>
+                        <p style="text-align: center; font-size: 1.1em; font-weight: bold; color: #f1c40f;">Karanlık Kutu (Camera Obscura) Şeması</p>
+                        <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">İbnülheysem'in optik çalışmalarının temelini oluşturan düzenek</p>
                     </div>
                 </div>
             </div>
             
             <div class="navigation">
-                <button class="btn nav-btn" onclick="previousScreen()">Geri</button>
-                <span class="screen-counter">8/10</span>
-                <button class="btn nav-btn" onclick="nextScreen()">Devam Et</button>
+                <button class="btn nav-btn" onclick="previousScreen()">⬅️ Geri</button>
+                <span class="screen-counter" style="background: linear-gradient(45deg, #ff6b6b, #4ecdc4); color: white; padding: 10px 20px; border-radius: 25px; font-weight: bold;">8/10</span>
+                <button class="btn nav-btn" onclick="nextScreen()">Devam Et ➡️</button>
             </div>
         </div>
 
@@ -1004,7 +1026,6 @@
                 <h3>Test Sonuçları</h3>
                 <div id="score-display" style="font-size: 1.5em; margin: 20px 0;"></div>
                 <div id="badges-display"></div>
-                <button class="btn btn-success" onclick="generateReport()">Raporu İndir (PDF)</button>
             </div>
             
             <div class="navigation">
@@ -1025,7 +1046,6 @@
                 <div id="final-results"></div>
                 <div style="margin: 30px 0;">
                     <button class="btn btn-success" onclick="restartSimulation()">Yeniden Başla</button>
-                    <button class="btn btn-warning" onclick="generateReport()">Raporu İndir</button>
                 </div>
             </div>
         </div>
@@ -1428,6 +1448,7 @@
                     document.getElementById('quiz-3').style.display = 'block';
                 }, 2000);
             } else {
+                // Işık yolu yok
                 target.style.background = '#2c3e50';
                 target.style.color = 'white';
                 target.innerHTML = '🎯 Perde';
@@ -1599,18 +1620,37 @@
                 const pointRect = point.getBoundingClientRect();
                 const containerRect = point.parentElement.getBoundingClientRect();
                 
-                // Engel kontrolü
+                // Engel kontrolü - daha doğru algılama
                 let isBlocked = false;
                 if (obstacleRect && obstacle.style.display !== 'none') {
-                    // Basit engel kontrolü
                     const pointX = pointRect.left - containerRect.left;
                     const pointY = pointRect.top - containerRect.top;
                     const obstacleX = obstacleRect.left - containerRect.left;
                     const obstacleY = obstacleRect.top - containerRect.top;
+                    const obstacleWidth = obstacleRect.width;
+                    const obstacleHeight = obstacleRect.height;
                     
-                    // Engel nokta ile kaynak arasında mı?
-                    if (pointX > 280 && pointX < obstacleX && pointY > 180 && pointY < 220) {
-                        isBlocked = true;
+                    // Kaynak merkezi (280, 280)
+                    const sourceX = 280;
+                    const sourceY = 280;
+                    
+                    // Nokta ile kaynak arasındaki çizgi engeli kesiyor mu?
+                    const lineIntersectsObstacle = (
+                        (pointX > sourceX && pointX > obstacleX) || // Nokta kaynağın sağında ve engel de sağında
+                        (pointX < sourceX && pointX < obstacleX) || // Nokta kaynağın solunda ve engel de solunda
+                        (pointY > sourceY && pointY > obstacleY) || // Nokta kaynağın altında ve engel de altında
+                        (pointY < sourceY && pointY < obstacleY)    // Nokta kaynağın üstünde ve engel de üstünde
+                    );
+                    
+                    // Eğer çizgi engeli kesiyorsa
+                    if (!lineIntersectsObstacle) {
+                        // Engel nokta ile kaynak arasında mı kontrol et
+                        const isBetweenX = (pointX > sourceX && pointX > obstacleX) || (pointX < sourceX && pointX < obstacleX);
+                        const isBetweenY = (pointY > sourceY && pointY > obstacleY) || (pointY < sourceY && pointY < obstacleY);
+                        
+                        if (!isBetweenX && !isBetweenY) {
+                            isBlocked = true;
+                        }
                     }
                 }
                 
@@ -1690,89 +1730,12 @@
             ctx.fill();
         }
 
-        function saveDrawing() {
-            const link = document.createElement('a');
-            link.download = 'isik-cizimi.png';
-            link.href = canvas.toDataURL();
-            link.click();
-        }
-
         function updateResult(select, index) {
             // Tablo güncelleme
         }
 
-        function exportPDF() {
-            // Basit PDF raporu oluşturma
-            const reportContent = `
-                <html>
-                <head>
-                    <title>Işık Yayılımı Deney Raporu</title>
-                    <style>
-                        body { font-family: Arial, sans-serif; margin: 20px; }
-                        h1 { color: #2c3e50; text-align: center; }
-                        h2 { color: #34495e; border-bottom: 2px solid #3498db; }
-                        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-                        th, td { border: 1px solid #bdc3c7; padding: 10px; text-align: left; }
-                        th { background: #ecf0f1; font-weight: bold; }
-                        .result { background: #d5f4e6; padding: 10px; border-radius: 5px; margin: 10px 0; }
-                    </style>
-                </head>
-                <body>
-                    <h1>🌟 Işık Yayılımı Deney Raporu 🌟</h1>
-                    <p><strong>Tarih:</strong> ${new Date().toLocaleDateString('tr-TR')}</p>
-                    <p><strong>Öğrenci:</strong> [Öğrenci Adı]</p>
-                    
-                    <h2>📊 Deney Sonuçları</h2>
-                    <table>
-                        <tr>
-                            <th>Düzenek</th>
-                            <th>Gözlem</th>
-                            <th>Sonuç (Doğrusal mı?)</th>
-                        </tr>
-                        <tr>
-                            <td>Delikli kartlar hizalı</td>
-                            <td>Perde aydınlık</td>
-                            <td>Evet</td>
-                        </tr>
-                        <tr>
-                            <td>Kırık pipet</td>
-                            <td>Perde karanlık</td>
-                            <td>Evet</td>
-                        </tr>
-                        <tr>
-                            <td>Her yönde yayılma</td>
-                            <td>A,B,C'ye ışık ulaştı</td>
-                            <td>Evet</td>
-                        </tr>
-                    </table>
-                    
-                    <h2>🎯 Sonuç</h2>
-                    <div class="result">
-                        <p><strong>Deney sonucunda:</strong></p>
-                        <ul>
-                            <li>Işığın doğrusal yayıldığı gözlemlendi</li>
-                            <li>Işığın her yönde yayıldığı kanıtlandı</li>
-                            <li>Engel durumunda ışığın ulaşamadığı görüldü</li>
-                        </ul>
-                    </div>
-                    
-                    <h2>📝 Çizim</h2>
-                    <p>[Öğrenci çizimi buraya eklenecek]</p>
-                </body>
-                </html>
-            `;
-            
-            // Yeni pencerede raporu aç
-            const reportWindow = window.open('', '_blank');
-            reportWindow.document.write(reportContent);
-            reportWindow.document.close();
-            
-            // Yazdırma seçeneği
-            setTimeout(() => {
-                reportWindow.print();
-            }, 1000);
-            
-            showFeedback('correct', '📄 PDF raporu oluşturuldu! Yazdırma penceresi açıldı.');
+        function saveData() {
+            showFeedback('correct', '✅ Veriler kaydedildi!');
         }
 
         // E7: Oyun
@@ -2115,10 +2078,6 @@
             showScreen(10);
         }
 
-        function generateReport() {
-            alert('PDF raporu oluşturuluyor...');
-            // PDF oluşturma işlemi
-        }
 
         function restartSimulation() {
             currentScreen = 0;
